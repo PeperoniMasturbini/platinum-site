@@ -7,13 +7,25 @@
   <meta name="description" content="Platinum Consulting — До 25 миллионов тенге кредит — консультация бесплатно.">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(180deg, #0f52ba 0%, #2a52be 100%);
+      background: #1e345e;
       font-family: Arial, sans-serif;
       color: #e8f1ff;
       text-align: center;
+    }
+    .wrapper {
+      background: linear-gradient(180deg, #1e3157 0%, #33578c 100%);
+      border-left: 8px solid rgba(255, 255, 255, 0.1);
+      border-right: 8px solid rgba(255, 255, 255, 0.1);
+      margin: 0 auto;
+      max-width: 720px;
+      box-sizing: border-box;
+      min-height: 100vh;
     }
     .container {
       max-width: 480px;
@@ -49,6 +61,11 @@
       margin-bottom: 20px;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .main-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
     .btn {
       display: block;
@@ -64,27 +81,137 @@
     .btn:hover {
       background-color: #333333;
     }
+    section {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+      margin-top: 20px;
+    }
+    h2 {
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    p, ul, li, a {
+      color: #e8f1ff;
+    }
+    .email-highlight {
+      display: inline-block;
+    }
+    .contacts-title {
+      display: inline-block;
+    }
+    .about-title {
+      display: inline-block;
+    }
+    .glow {
+      animation: glowText 1.5s ease-in-out;
+    }
+    @keyframes glowText {
+      0% { text-shadow: 0 0 0px #8fd1ff; color: #e8f1ff; }
+      50% { text-shadow: 0 0 8px #8fd1ff, 0 0 12px #8fd1ff; color: #ffffff; }
+      100% { text-shadow: 0 0 0px #8fd1ff; color: #e8f1ff; }
+    }
     footer {
       margin-top: 40px;
       font-size: 12px;
       color: #cbd6e2;
     }
   </style>
+  <script>
+    function scrollToSectionAndAnimate(targetId, selector) {
+      const target = document.querySelector(targetId);
+      const animateEl = document.querySelector(selector);
+      if (target && animateEl) {
+        const offset = target.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2 + target.offsetHeight / 2;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+        animateEl.classList.remove('glow');
+        void animateEl.offsetWidth;
+        animateEl.classList.add('glow');
+      }
+    }
+  </script>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">
-  <img src="img/logo.png" alt="Platinum Logo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
-</div>
-    <div class="title">Platinum Consulting</div>
-    <div class="desc">До 25 миллионов тенге кредит — консультация бесплатно</div>
-    <a href="https://api.whatsapp.com/send/?phone=%2B77753346178&text&type=phone_number&app_absent=0" target="_blank">
-      <img src="img/174543259971247498.png" alt="Platinum Banner" class="main-img" style="border: 4px solid #fff; border-radius: 20px;">
-    </a>
-    <a class="btn" href="https://api.whatsapp.com/send/?phone=%2B77753346178&text&type=phone_number&app_absent=0" target="_blank">Написать в WhatsApp</a>
-    <footer>
-      &copy; 2025 Platinum Consulting. Все права защищены.
-    </footer>
+  <div class="wrapper">
+    <div class="container">
+      <div class="logo">
+        <img src="img/logo.png" alt="Platinum Logo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+      </div>
+      <div class="title">Platinum Consulting</div>
+      <div class="desc">До 25 миллионов тенге кредит — консультация бесплатно</div>
+      <a href="https://api.whatsapp.com/send/?phone=%2B77753346178&text&type=phone_number&app_absent=0" target="_blank">
+        <img src="img/174543259971247498.png" alt="Platinum Banner" class="main-img" style="border: 4px solid #fff; border-radius: 20px;">
+      </a>
+      <a class="btn" href="https://api.whatsapp.com/send/?phone=%2B77753346178&text&type=phone_number&app_absent=0" target="_blank">Написать в WhatsApp</a>
+
+      <section id="about" style="margin-top: 40px; background-color: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 16px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; text-align: left;">
+          <div style="flex: 1; min-width: 220px;">
+            <h2 class="about-title">📘 О нас</h2>
+            <p>Platinum Consulting предоставляет профессиональную помощь в рефинансировании кредитов и получении крупных сумм финансирования для физических лиц и бизнеса. Мы сопровождаем вас на всех этапах — от консультации до получения средств.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts">
+        <h2 class="contacts-title">📞 Контакты</h2>
+        <ul>
+          <li>Email: <span class="email-highlight">platinumconsulting.online@mail.ru</span></li>
+          <li>Телефон: +7 706 639 9239</li>
+          <li>Instagram: <a href="https://www.instagram.com/platinum_cons?igsh=cHpxbXU0c3VnZjJl">@platinum_cons</a></li>
+          <li>Facebook: <a href="https://www.facebook.com/profile.php?id=61576613074923&locale=ru_RU">@PlatinumConsulting</a></li>
+        </ul>
+      </section>
+
+      <section id="privacy">
+        <h2>🔒 Политика конфиденциальности</h2>
+        <p>Мы уважаем вашу конфиденциальность. Все данные, предоставленные вами на нашем сайте, используются исключительно для оказания консультационных и кредитных услуг. Мы не передаём вашу информацию третьим лицам без вашего согласия.</p>
+        <p>Вы можете запросить удаление своих данных по email: platinumconsulting.online@mail.ru.</p>
+      </section>
+
+      <section id="terms">
+        <h2>📄 Условия использования</h2>
+        <p>Пользуясь сайтом Platinum Consulting, вы соглашаетесь с тем, что предоставляемая информация не является публичной офертой и требует индивидуальной консультации. Мы не несем ответственности за решения, принятые без личного обращения к нашим специалистам. Вся информация предоставляется в ознакомительных целях.</p>
+      </section>
+
+      <footer>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0;">
+          <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center;">
+            <img src="img/logo.png" alt="Logo" style="height: 50px; border-radius: 6px; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+            <style>
+              img[alt='Logo']:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+              }
+            </style>
+            <div style="font-size: 14px; line-height: 1.6;">
+              <div>&copy; 2025 Platinum Consulting</div>
+              <div><a href="#terms" style="color: #8fd1ff; text-decoration: none;">Условия использования</a> | <a href="#privacy" style="color: #8fd1ff; text-decoration: none;">Политика конфиденциальности</a></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-size: 13px;">
+            <div>
+              <strong>Услуги</strong><br>
+              Рефинансирование<br>
+              Крупные кредиты<br>
+              Консультации
+            </div>
+            <div>
+              <strong>Компания</strong><br>
+              <a href="javascript:void(0);" onclick="scrollToSectionAndAnimate('#about', '.about-title')" style="color: #e8f1ff; text-decoration: none;">О нас</a><br>
+              <a href="javascript:void(0);" onclick="scrollToSectionAndAnimate('#contacts', '.contacts-title')" style="color: #e8f1ff; text-decoration: none;">Контакты</a>
+            </div>
+            <div>
+              <strong>Поддержка</strong><br>
+              <a href="javascript:void(0);" onclick="scrollToSectionAndAnimate('#contacts', '.email-highlight')" style="color: #e8f1ff; text-decoration: none;">Email</a><br>
+              <a href="https://api.whatsapp.com/send/?phone=%2B77753346178&text&type=phone_number&app_absent=0" target="_blank" style="color: #e8f1ff; text-decoration: none;">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
+
